@@ -160,6 +160,25 @@ Use the route that fits each poster. Check every image against the people rules 
 - **Custom shapes, gradients and light,** not template boxes.
 - **Vary the signature effects** across the set while keeping the shared system.
 
+**Design principles (non-negotiable).** These are the mistakes that make a poster look machine-made. Plan for them while building, not only at the end.
+- **Breathing space.** Text gets at least 24 px of clear space (40 px is better) from every shape edge, ring, line, badge and image. A circle or ring must never run along, through or close to text.
+- **No near-misses.** Two elements either overlap clearly and on purpose (by a quarter of the smaller one or more), or sit well apart. Edges that almost touch, or line up by accident, look like a mistake. Examples: a product top lined up with the top of the circle behind it, or a sticker grazing a box corner.
+- **Circles meet panels clearly.** A circle that runs into a footer or band either stops well short of it (24 px or more) or goes clearly under it (40 px or more). It never just grazes the edge.
+- **Clear packaging.** Check every cut-out on the poster's real background colour, not only on white and black. Leftover backdrop, jagged edges and solid "frosted" areas only show up on the actual colour.
+- **Fewer decorations.** Each extra ring, outline or leaf is one more thing that can crowd the text. If it doesn't add meaning, leave it out.
+- **Visual hierarchy.** Decide the reading order: (1) headline or product, (2) supporting line, (3) story element, (4) sign-off. Size, weight and colour must follow that order. Only one thing shouts.
+- **Pairing and grouping.** Every icon sits right next to the one thing it labels, with equal spacing in every pair. Each contact detail gets its own icon: WhatsApp next to the number, Instagram next to the handle. Group related items under one small heading ("Order now", "Available in"). Separate unrelated groups with clear space.
+- **Alignment.**
+  - One left margin for the logo, headline, body and footer.
+  - Footer blocks align to the top, so their small headings share a line.
+  - Rows and columns of badges have even, measured spacing.
+- **Line breaks.**
+  - Running text never ends on a single short word. Use `text-wrap: balance` on headlines and body text, then read each line.
+  - A break should fall between phrases, not inside one ("over oats, / guinea corn" is wrong; "over / oats, guinea corn and soy pulp" is right).
+  - Headlines break by meaning, with a `<br>` where you choose.
+- **One name per thing.** Use the same product or flavour names, ingredient lists and claims on every poster in the set. Before you publish, list every claim (such as "no added sugar" or "100% natural") for the client to confirm.
+- **The footer is designed too.** It gets the same care as the hero: hierarchy, pairing, alignment and at least 36 px of padding.
+
 **Technique menu** (choose per poster; don't use them all):
 - **Depth:**
   - layer order: background → texture → glow or colour fields → shapes → subject → foreground element → story element → overlay for legibility → type → sign-off
@@ -198,22 +217,54 @@ Use these unless the user gives others.
 
 ---
 
-## Part 7: Check before showing
+## Part 7: Check before showing (three gates, every time)
 
-After building each poster, render it alone at 1:1 and look at it critically. When the set is done, also look at all posters on a phone-size contact sheet (390 px wide).
+Nothing reaches the user until it has passed all three gates. Fix, re-render and re-run the gates until they're clean.
 
-Fix anything that fails:
-- **Text:**
-  - clipped or overlapping text
-  - descenders hitting the next block
-  - letters touching
-  - text over a busy part of the image
-- **Minimum sizes at 1080 px wide:** headline about 110 px, body about 30 px, small labels about 19 px.
-- **Images:** cards covering faces or key details; halos around cut-outs.
+**Gate 1: automatic layout check.** Run `python tools/check_layout.py <project>/index.html`. It measures the real page and lists:
+- text overlapping text;
+- circle edges or rings near or through text;
+- circles that almost touch;
+- graphics under text;
+- bad line breaks;
+- text that is too small or too close to the edge.
+
+It also saves each poster with the problems outlined in red (must fix) or orange (check it is intended), in `<project>/checks/`.
+- Fix every red item.
+- Look at every orange one and decide.
+- Re-run until there is no red.
+- Chain the export to the check so a red result stops it: `python tools/check_layout.py index.html && python tools/export_png.py index.html ...`.
+
+**Gate 2: your own look.** Render each poster at 1:1 and on a phone-size contact sheet (390 px wide). Check:
+- **Text:** nothing clipped, no descenders hitting the next block, no letters touching, no text over a busy part of the image.
+- **Minimum sizes at 1080 px wide:** headline about 100 px, body about 30 px, small labels 18 to 19 px.
+- **Images:** no cards covering faces or key details; no halos around cut-outs.
 - **People:** every person passes Part 6.
-- **The set:** it reads as one campaign, no two posters feel like copies, and each headline reads in about 2 seconds at phone size.
+- **The set:** reads as one campaign, no two posters feel like copies, each headline reads in about 2 seconds at phone size.
+- **Part 5's design principles,** one by one.
 
-Then show the user the preview page in the browser pane, with a short note on each poster and what you fixed.
+**Gate 3: independent design review.** Hand the PNGs to a separate reviewer: a subagent (the Agent or Task tool), or a fresh chat if there is no subagent tool. The reviewer must not see your plan or notes. A reviewer who knows your intentions sees what you meant, not what is there.
+- Paste the reviewer brief below, with the file paths filled in.
+- Fix every MUST FIX and SHOULD FIX, or write down why you didn't.
+- Run gates 1 and 2 again on what changed. If the changes were big, run gate 3 again too.
+
+> **Reviewer brief.** You are a senior art director reviewing [N] [platform] posters ([W]×[H]) for [brand]. Someone else designed them. Find every flaw before the client sees them. Be strict and specific. Don't praise, and don't redesign from scratch. Open each file: [paths]. Also judge each one at phone size (390 px wide).
+>
+> Check:
+> 1. **Breathing space:** anything touching, nearly touching or awkwardly tangent, or crowding text.
+> 2. **Visual hierarchy:** one clear focal point and an obvious reading order.
+> 3. **Grouping and pairing:** every icon clearly belongs to its label; related items are grouped.
+> 4. **Alignment and margins:** shared margins, even gutters, nothing almost-aligned.
+> 5. **Typography:** line breaks, touching letters, descenders, sizes at phone size.
+> 6. **Legibility and contrast.**
+> 7. **Consistency across the set.**
+> 8. **Copy:** typos, AI-sounding phrases, risky claims.
+> 9. **Product and image quality:** edges, halos, cropping, shadows.
+> 10. **Anything else an art director would send back.**
+>
+> For each poster, list findings with: severity (MUST FIX / SHOULD FIX / NITPICK), location (with approximate pixel coordinates), what is wrong, and the concrete fix. Then list set-wide issues.
+
+Then show the user the preview page in the browser pane, with a short note on each poster, what the review found and what you fixed.
 
 **Common problems:**
 
@@ -224,12 +275,15 @@ Then show the user the preview page in the browser pane, with a short note on ea
 | Odd boxes or colours in a poster | A class name clashes with the preview page. Prefix poster classes. |
 | Glow turns letters into blobs | Use stacked `drop-shadow` on stroked text. |
 | Text unreadable over a bright photo | Move the text into the overlay area; don't weaken the overlay. |
+| A ring or circle edge runs close to text | Shrink or move the circle so the text is clearly inside or clearly outside it, or remove the ring. |
+| An icon could belong to two things | Give each detail its own icon, pair them tightly and separate the pairs. |
+| A paragraph ends on one word | Add `text-wrap: balance`, change the width, or rewrite. |
 
 ---
 
 ## Part 8: Finish
 
-- **Export** only when the user is happy, or straight away if they asked for PNGs. Run `python tools/export_png.py <project>/index.html --prefix <brand> --size <WxH>`. It starts its own local server, renders every `?solo=` poster to `<project>/exports/` and checks each file's size.
+- **Export** only after the three gates in Part 7 pass, and only when the user is happy, or straight away if they asked for PNGs. Run `python tools/export_png.py <project>/index.html --prefix <brand> --size <WxH>`. It starts its own local server, renders every `?solo=` poster to `<project>/exports/` and checks each file's size.
 - **Send the files,** with a list of every placeholder (prices, times, numbers) that the client must confirm.
 - **Save local facts** the user gives you (for example "taxis here are painted blue") in your project notes, and apply them to every poster they affect.
 
@@ -246,6 +300,7 @@ Then show the user the preview page in the browser pane, with a short note on ea
 | `tools/clean_cutout.py` | Removes the faint glow around generated cut-outs. |
 | `tools/stitch_tiles.py` | Joins four screenshot tiles into one image (ChatGPT route). |
 | `tools/recolour.py` | Changes one colour to another inside an area. |
+| `tools/check_layout.py` | Gate 1: finds clashes, near-misses, bad line breaks and tiny text, and saves outlined screenshots. |
 | `tools/export_png.py` | Exports `?solo=pN` posters to PNG on macOS, Windows or Linux. |
 
 All tools need Python 3.9+ with Pillow and NumPy (`tools/requirements.txt`). PNG export also needs Chrome, Edge, Chromium or Brave, or Playwright.

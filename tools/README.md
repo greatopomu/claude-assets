@@ -9,4 +9,5 @@ python tools/selftest.py      # runs every tool on test images
 ```
 
 Each script explains its own options at the top of the file (or run it with `-h` where supported).
+`layout_check.js` is the measuring script that `check_layout.py` adds to the page while checking.
 `_browser.py` is a shared helper that finds Chrome, Edge, Chromium or Brave on macOS, Windows or Linux. Set `CHROME_PATH` to choose a specific browser.

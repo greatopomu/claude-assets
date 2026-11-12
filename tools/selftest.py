@@ -56,6 +56,16 @@ open(page, "w").write("""<!doctype html><html><head><style>*{margin:0}body{backg
 code, out = run(f"{HERE}/export_png.py", page, "--out", f"{tmp}/exports", "--prefix", "test")
 check("export_png", code == 0 and out.count("OK") >= 2, out.replace("\n", " | ")[:160])
 
+# 7 check_layout: a ring running through text must be caught; a clean poster must pass
+page2 = os.path.join(tmp, "layout.html")
+open(page2, "w").write("""<!doctype html><html><head><style>*{margin:0}.poster{width:1080px;height:1350px;position:relative;background:#fff}
+.poster>*{position:absolute}h2{left:64px;top:100px;font:800 90px sans-serif}.ring{left:300px;top:150px;width:600px;height:600px;border:3px solid #c00;border-radius:50%}</style></head>
+<body><section class="poster" id="p1"><div class="ring"></div><h2>Clash here</h2></section><section class="poster" id="p2"><h2>All clear</h2></section>
+<script>const s=new URLSearchParams(location.search).get('solo');if(s)document.querySelectorAll('.poster').forEach(p=>{if(p.id!==s)p.remove()})</script></body></html>""")
+code, out = run(f"{HERE}/check_layout.py", page2, "--shots", f"{tmp}/checks")
+ok = code == 1 and "p1: 0 to fix" not in out and "p2: 0 to fix" in out and "Circle edge" in out
+check("check_layout", ok, out.replace("\n", " | ")[:200])
+
 print("-" * 40)
 print("ALL PASSED" if all(results) else f"{results.count(False)} FAILED. Run tools/check_setup.py for fixes.")
 print("Test files:", tmp)

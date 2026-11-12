@@ -23,6 +23,8 @@ html,body{background:#111;color:#eee;font-family:var(--text)}
 .slot>.poster{transform:scale(var(--s));transform-origin:0 0}
 /* 3. Poster base: every poster is a fixed canvas */
 .poster{position:relative;width:var(--W);height:var(--H);overflow:hidden;isolation:isolate}
+/* Balanced line breaks for every heading and paragraph (Part 5: line breaks) */
+.poster h1,.poster h2,.poster h3,.poster p{text-wrap:balance}
 /* 4. Posters: prefix every class with the poster id (p1-, p2-) to avoid clashes */
 .p1{background:radial-gradient(90% 70% at 70% 30%,#2c5687,var(--c1) 60%,#0d1d33)}
 .p1-h{position:absolute;left:64px;top:96px;font:800 140px/.88 var(--display);letter-spacing:-.028em;color:#fff}

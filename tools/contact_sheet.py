@@ -12,6 +12,8 @@ while i < len(args):
     else:
         files.append(args[i]); i += 1
 out, files = files[0], files[1:]
+if not files or os.path.abspath(out) in [os.path.abspath(f) for f in files]:
+    sys.exit("Usage: contact_sheet.py OUT.png img1 img2 ... (the first path is the sheet to create; it must not be one of the images)")
 W, H, C = opts['--w'], opts['--h'], opts['--cols']
 rows = (len(files) + C - 1) // C
 sheet = Image.new('RGB', (C * W, rows * (H + 22)), 'white'); d = ImageDraw.Draw(sheet)
