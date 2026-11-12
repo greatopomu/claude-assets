@@ -1,0 +1,4 @@
+pillow>=10
+numpy>=1.24
+# optional, only if no Chrome/Edge/Chromium/Brave is installed:
+# playwright>=1.40   (then run: python -m playwright install chromium)

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poster Set</title>
+<!-- Replace with the brand's fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* 1. Brand tokens: replace with sampled brand colours */
+:root{ --c1:#1f3a5f; --c2:#f2b134; --c3:#fbf7ef; --ink:#111; --display:'Inter Tight',system-ui,sans-serif; --text:'Inter Tight',system-ui,sans-serif; --W:1080px; --H:1350px; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#111;color:#eee;font-family:var(--text)}
+/* 2. Preview shell (leave as is) */
+.bar{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:12px 16px;background:#111d;border-bottom:1px solid #333}
+.bar h1{font:700 16px var(--text)}
+.seg button{font:600 13px var(--text);padding:7px 12px;border-radius:99px;border:0;background:#222;color:#bbb;cursor:pointer}
+.seg button[aria-pressed=true]{background:#fff;color:#111}
+.wall{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;padding:24px 16px 48px}
+.frame{display:flex;flex-direction:column;gap:8px}
+.frame figcaption{font:600 13px var(--text);color:#aaa}
+.slot{width:calc(var(--W)*var(--s));height:calc(var(--H)*var(--s));overflow:hidden;border-radius:6px}
+.slot>.poster{transform:scale(var(--s));transform-origin:0 0}
+/* 3. Poster base: every poster is a fixed canvas */
+.poster{position:relative;width:var(--W);height:var(--H);overflow:hidden;isolation:isolate}
+/* 4. Posters: prefix every class with the poster id (p1-, p2-) to avoid clashes */
+.p1{background:radial-gradient(90% 70% at 70% 30%,#2c5687,var(--c1) 60%,#0d1d33)}
+.p1-h{position:absolute;left:64px;top:96px;font:800 140px/.88 var(--display);letter-spacing:-.028em;color:#fff}
+.p1-h em{font-style:normal;color:var(--c2)}
+.p2{background:var(--c3)}
+.p2-h{position:absolute;left:64px;top:96px;font:800 140px/.88 var(--display);letter-spacing:-.028em;color:var(--c1)}
+</style>
+</head>
+<body>
+<header class="bar"><h1>Poster set preview</h1>
+  <div class="seg"><button data-m="fit" aria-pressed="true">Fit</button> <button data-m="phone" aria-pressed="false">Phone</button> <button data-m="full" aria-pressed="false">100%</button></div>
+</header>
+<main class="wall" id="wall">
+  <figure class="frame"><figcaption>01 · placeholder</figcaption><div class="slot">
+    <section class="poster p1" id="p1"><h2 class="p1-h">Poster<br><em>one.</em></h2></section></div></figure>
+  <figure class="frame"><figcaption>02 · placeholder</figcaption><div class="slot">
+    <section class="poster p2" id="p2"><h2 class="p2-h">Poster<br>two.</h2></section></div></figure>
+</main>
+<script>
+// Preview scaling: Fit / Phone (390px wide) / 100%
+const W=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--W')),H=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--H'));
+let mode='fit';
+function fit(){let s=mode==='full'?1:mode==='phone'?390/W:Math.min((innerHeight-140)/H,(innerWidth-32)/W,.6);document.documentElement.style.setProperty('--s',s)}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));fit()});
+addEventListener('resize',fit);fit();
+// ?solo=p1 shows one poster at 1:1 for export (used by tools/export_png.py)
+const solo=new URLSearchParams(location.search).get('solo');
+if(solo){const p=document.getElementById(solo);document.body.appendChild(p);document.querySelector('.bar').remove();document.getElementById('wall').remove();document.body.style.background='#000';document.documentElement.style.setProperty('--s',1)}
+</script>
+</body>
+</html>
