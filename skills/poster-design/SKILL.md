@@ -177,6 +177,9 @@ Use the route that fits each poster. Check every image against the people rules 
   - A break should fall between phrases, not inside one ("over oats, / guinea corn" is wrong; "over / oats, guinea corn and soy pulp" is right).
   - Headlines break by meaning, with a `<br>` where you choose.
 - **One name per thing.** Use the same product or flavour names, ingredient lists and claims on every poster in the set. Before you publish, list every claim (such as "no added sugar" or "100% natural") for the client to confirm.
+- **Circular text fills its ring evenly.** Repeat one short phrase two or three times, with a separator after each copy. Fit each copy to an equal share of the circle (`startOffset` 0%, 50%, … with `textLength` and `lengthAdjust="spacing"`). Keep at least 6 px between the letters and any outline, and between the ring text and the centre words. A long one-off phrase leaves a gap or a crowded join.
+- **Use official icons for brands.** WhatsApp, Instagram, TikTok and similar icons come from Simple Icons (`https://cdn.jsdelivr.net/npm/simple-icons@13/icons/<name>.svg`, free to use), never drawn by hand. Draw them in one colour, at one size, sitting right next to their detail.
+- **Store fonts locally.** Download the Google Fonts CSS and its font files into `<project>/fonts/` and link that. A slow network otherwise makes exports fall back to system fonts without any warning. Check the first export for the right typeface.
 - **The footer is designed too.** It gets the same care as the hero: hierarchy, pairing, alignment and at least 36 px of padding.
 
 **Technique menu** (choose per poster; don't use them all):
@@ -260,7 +263,8 @@ It also saves each poster with the problems outlined in red (must fix) or orange
 > 7. **Consistency across the set.**
 > 8. **Copy:** typos, AI-sounding phrases, risky claims.
 > 9. **Product and image quality:** edges, halos, cropping, shadows.
-> 10. **Anything else an art director would send back.**
+> 10. **Small parts up close:** zoom into stickers, badges and icons. Circular text should be evenly spaced with no gap. Brand icons should be the official ones and clearly drawn.
+> 11. **Anything else an art director would send back.**
 >
 > For each poster, list findings with: severity (MUST FIX / SHOULD FIX / NITPICK), location (with approximate pixel coordinates), what is wrong, and the concrete fix. Then list set-wide issues.
 
