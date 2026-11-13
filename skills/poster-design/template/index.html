@@ -19,8 +19,8 @@ html,body{background:#111;color:#eee;font-family:var(--text)}
 .wall{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;padding:24px 16px 48px}
 .frame{display:flex;flex-direction:column;gap:8px}
 .frame figcaption{font:600 13px var(--text);color:#aaa}
-.slot{width:calc(var(--W)*var(--s));height:calc(var(--H)*var(--s));overflow:hidden;border-radius:6px}
-.slot>.poster{transform:scale(var(--s));transform-origin:0 0}
+.slot{width:calc(var(--W)*var(--preview-scale));height:calc(var(--H)*var(--preview-scale));overflow:hidden;border-radius:6px}
+.slot>.poster{transform:scale(var(--preview-scale));transform-origin:0 0}
 /* 3. Poster base: every poster is a fixed canvas */
 .poster{position:relative;width:var(--W);height:var(--H);overflow:hidden;isolation:isolate}
 /* Balanced line breaks for every heading and paragraph (Part 5: line breaks) */
@@ -47,12 +47,12 @@ html,body{background:#111;color:#eee;font-family:var(--text)}
 // Preview scaling: Fit / Phone (390px wide) / 100%
 const W=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--W')),H=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--H'));
 let mode='fit';
-function fit(){let s=mode==='full'?1:mode==='phone'?390/W:Math.min((innerHeight-140)/H,(innerWidth-32)/W,.6);document.documentElement.style.setProperty('--s',s)}
+function fit(){let s=mode==='full'?1:mode==='phone'?390/W:Math.min((innerHeight-140)/H,(innerWidth-32)/W,.6);document.documentElement.style.setProperty('--preview-scale',s)}
 document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));fit()});
 addEventListener('resize',fit);fit();
 // ?solo=p1 shows one poster at 1:1 for export (used by tools/export_png.py)
 const solo=new URLSearchParams(location.search).get('solo');
-if(solo){const p=document.getElementById(solo);document.body.appendChild(p);document.querySelector('.bar').remove();document.getElementById('wall').remove();document.body.style.background='#000';document.documentElement.style.setProperty('--s',1)}
+if(solo){const p=document.getElementById(solo);document.body.appendChild(p);document.querySelector('.bar').remove();document.getElementById('wall').remove();document.body.style.background='#000';document.documentElement.style.setProperty('--preview-scale',1)}
 </script>
 </body>
 </html>

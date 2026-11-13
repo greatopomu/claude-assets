@@ -17,6 +17,7 @@ Skills and tools to use with Claude (Claude Code, the Claude desktop app or clau
 |---|---|
 | [check_setup.py](tools/check_setup.py) | Shows what your computer can run, and how to fix anything missing. |
 | [selftest.py](tools/selftest.py) | Tests every tool on sample images. |
+| [remove_bg.swift](tools/remove_bg.swift) | Removes a photo's background on a Mac, using the built-in subject lifting. |
 | [check_layout.py](tools/check_layout.py) | Checks HTML posters for clashing text, crowded circles, bad line breaks and tiny text, and outlines each problem. |
 | [export_png.py](tools/export_png.py) | Exports HTML posters to PNG (macOS, Windows, Linux). |
 | [sample_colours.py](tools/sample_colours.py) | Finds the main brand colours in a logo or flyer. |

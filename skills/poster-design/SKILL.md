@@ -111,6 +111,8 @@ Don't default to dark backgrounds with glowing accents. Use them only when the b
 
 ## Part 4: Getting images (three routes)
 
+**Cut-outs on a Mac:** `swift tools/remove_bg.swift photo.jpg out.png` uses the Mac's own subject lifting (free, no download). It works on stock photos and ChatGPT images alike. Check every cut-out on the poster's real colour: steam, smoke and the inside of clear glasses often come out solid, so crop them off or keep that image in a frame.
+
 **First, use the client's own files.** Real product photos, packshots in an old poster, and logos beat any other source. Clear packaging on a flat colour can be cut out with its plastic kept see-through: remove the background colour from the plastic instead of deleting it. If the backgrounds are busy, ask the client for clean packshots.
 
 Use the route that fits each poster. Check every image against the people rules (Part 6) before using it. Record sources and licences in `RESEARCH.md`.
@@ -283,6 +285,7 @@ Then show the user the preview page in the browser pane, with a short note on ea
 | Text unreadable over a bright photo | Move the text into the overlay area; don't weaken the overlay. |
 | A ring or circle edge runs close to text | Shrink or move the circle so the text is clearly inside or clearly outside it, or remove the ring. |
 | An icon could belong to two things | Give each detail its own icon, pair them tightly and separate the pairs. |
+| Colours or badges vanish only in the preview | A brand colour variable has the same name as a preview variable. Give brand tokens long names (`--sage`, not `--s`). |
 | A paragraph ends on one word | Add `text-wrap: balance`, change the width, or rewrite. |
 
 ---
@@ -306,6 +309,7 @@ Then show the user the preview page in the browser pane, with a short note on ea
 | `tools/clean_cutout.py` | Removes the faint glow around generated cut-outs. |
 | `tools/stitch_tiles.py` | Joins four screenshot tiles into one image (ChatGPT route). |
 | `tools/recolour.py` | Changes one colour to another inside an area. |
+| `tools/remove_bg.swift` | macOS: removes a photo's background with the built-in subject lifting. |
 | `tools/check_layout.py` | Gate 1: finds clashes, near-misses, bad line breaks and tiny text, and saves outlined screenshots. |
 | `tools/export_png.py` | Exports `?solo=pN` posters to PNG on macOS, Windows or Linux. |
 
