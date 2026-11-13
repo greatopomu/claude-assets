@@ -74,7 +74,7 @@ Don't ask about design choices such as style, layout or effects. Those are your 
 
 Do all of this yourself, then show the user **one short plan** to approve.
 
-1. **Sample the brand colours** from their files with a script (`tools/sample_colours.py`); don't guess. Plan to redraw the logo as clean SVG, never a blurry crop.
+1. **Sample the brand colours** from their files with a script (`tools/sample_colours.py`); don't guess. Use the client's own logo file exactly as it is. Redraw it as clean SVG only if all you have is a blurry copy, and never change its design (colour inversion only, if the client allows it).
 2. **Research the category:** how 3 or 4 leading brands advertise (layout, type, imagery, tone), including one local competitor. Borrow the thinking, never the assets. Save notes and sources in `RESEARCH.md`.
 3. **Collect local truth:** real places, everyday habits, words people actually use, and regional details. Examples of regional details: the usual vehicle colour in that state, or local dress.
 4. **Choose the art direction:** pick one option per row of the table in Part 3, to fit this brand and audience. Also choose the fonts (Google Fonts) and how the colours are used: which leads, which is the accent, and what the backgrounds are.
@@ -110,6 +110,8 @@ Don't default to dark backgrounds with glowing accents. Use them only when the b
 ---
 
 ## Part 4: Getting images (three routes)
+
+**First, use the client's own files.** Real product photos, packshots in an old poster, and logos beat any other source. Clear packaging on a flat colour can be cut out with its plastic kept see-through: remove the background colour from the plastic instead of deleting it. If the backgrounds are busy, ask the client for clean packshots.
 
 Use the route that fits each poster. Check every image against the people rules (Part 6) before using it. Record sources and licences in `RESEARCH.md`.
 
