@@ -164,6 +164,17 @@ Use the route that fits each poster. Check every image against the people rules 
 - **Custom shapes, gradients and light,** not template boxes.
 - **Vary the signature effects** across the set while keeping the shared system.
 
+**The premium bar.** Correct is not enough: a poster can pass every check and still look cheap. Before building, decide how each poster will hit these, and check them again at the end:
+- **One hero, big.** A person, product or object fills 40–60% of the canvas, bleeds off an edge and crosses at least one shape. No hero (only icons or boxes) reads as a flyer.
+- **Light and depth.** Build light: a glow behind the hero, a gradient from deep to bright, a rim light asked for in the image prompt, soft shadows. Flat pale fills and evenly lit layouts look cheap.
+- **Headline as the second hero.** Very heavy, very big, 2–4 words a line, 6–10 words in all, with one accent word. Long sentences in mid-size type kill the impact.
+- **Contrast.** One deep tone, one luminous accent, white. Washed-out tints everywhere look timid.
+- **Story elements float on the scene.** Cards, badges and tickets overlap the hero like a layer of glass. They aren't parked in separate boxes. A grid of rectangles reads like a form.
+- **Say less.** One supporting line and one call to action. Push details (times, addresses) into one designed object (a ticket, a date tile, a pass), never a dense panel.
+- **People over objects** where the brand allows. Faces and emotion carry a campaign. Generate them (ChatGPT, Higgsfield) when stock can't meet the people rules.
+- **Refined details.** Small caps labels with tracking, thin rules, consistent radius, real icons in one style, nothing default.
+- **Test it:** put the poster next to a premium reference (the brand's best work, or a leading brand in the category) at phone size. If yours looks plainer, it isn't done.
+
 **Design principles (non-negotiable).** These are the mistakes that make a poster look machine-made. Plan for them while building, not only at the end.
 - **Breathing space.** Text gets at least 24 px of clear space (40 px is better) from every shape edge, ring, line, badge and image. A circle or ring must never run along, through or close to text.
 - **No near-misses.** Two elements either overlap clearly and on purpose (by a quarter of the smaller one or more), or sit well apart. Edges that almost touch, or line up by accident, look like a mistake. Examples: a product top lined up with the top of the circle behind it, or a sticker grazing a box corner.
@@ -218,7 +229,7 @@ Use the route that fits each poster. Check every image against the people rules 
 Use these unless the user gives others.
 
 - **Women:** no trousers; long sleeves; loose fit with no visible bra lines or undergarment outlines; no cleavage; no earrings, makeup or painted nails. Hair may be uncovered.
-- **Men:** no dreadlocks; neat hair.
+- **Men:** long sleeves and long trousers (no short sleeves, no shorts); no dreadlocks; neat hair.
 - **Everyone:** people who fit the brand's place and audience, in real local settings.
 - **Write the rules into every image prompt, then check the result.** Zoom in on ears, sleeves, necklines and fit. AI images often add tiny stud earrings even when told not to; retouch or edit them out.
 
@@ -267,6 +278,7 @@ It also saves each poster with the problems outlined in red (must fix) or orange
 > 7. **Consistency across the set.**
 > 8. **Copy:** typos, AI-sounding phrases, risky claims.
 > 9. **Product and image quality:** edges, halos, cropping, shadows.
+> 0. **Premium:** next to a premium reference at phone size, does this look as polished? Is there one big hero, built light and depth, a short huge headline, and few boxes? Say plainly if it looks like a flyer or a form.
 > 10. **Small parts up close:** zoom into stickers, badges and icons. Circular text should be evenly spaced with no gap. Brand icons should be the official ones and clearly drawn.
 > 11. **Anything else an art director would send back.**
 >

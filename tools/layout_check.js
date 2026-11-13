@@ -45,6 +45,11 @@
         const br = brs.endsWith('%') ? parseFloat(brs) / 100 * b.width : parseFloat(brs);
         round = Math.abs(b.width - b.height) < 4 && br >= b.width * 0.45 && getComputedStyle(el).transform === 'none';
       }
+      if (round && el.tagName.toLowerCase() !== 'circle') {
+        const cs = getComputedStyle(el);
+        // soft light (radial gradient fading out, or a blur) has no edge to keep clear of
+        if (/blur\(/.test(cs.filter) || (/radial-gradient/.test(cs.backgroundImage) && /rgba\([^)]*, 0\)|transparent/.test(cs.backgroundImage))) round = false;
+      }
       if (round && el.tagName.toLowerCase() === 'circle') {
         // true radius even when the SVG is rotated (a rotated bounding box would be too big)
         const m = el.getScreenCTM(), sv = el.ownerSVGElement.createSVGPoint();
